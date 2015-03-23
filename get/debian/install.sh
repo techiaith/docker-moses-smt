@@ -8,7 +8,7 @@ sudo locale-gen cy_GB.UTF-8 en_US.UTF-8
 sudo dpkg-reconfigure locales
 
 cd $HOME
-git clone https://git.techiaith.bangor.ac.uk/cyfieithu/moses-smt.git
+git clone https://github.com/PorthTechnolegauIaith/moses-smt.git
 
 cd $HOME/moses-smt
 ./get/install-moses-smt.sh
