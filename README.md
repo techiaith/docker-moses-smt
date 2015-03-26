@@ -2,7 +2,7 @@
 
 # Cyfieithu Peirianyddol Cymraeg <> Saesneg Moses-SMT
 
-Mae'r project yma yn cynnwys y cod, sgriptiau a'r ddogfennaeth gysylltiedig sy'n hwyluso defnyddio Moses-SMT ar gyfer y Gymraeg. 
+Mae'r project yma yn cynnwys cod, sgriptiau a dogfennaeth gysylltiedig sy'n hwyluso defnydd Moses-SMT ar gyfer y Gymraeg. 
 
 ### Strwythur y Project
 
