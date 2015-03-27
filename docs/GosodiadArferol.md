@@ -35,12 +35,12 @@ Dim ond un gorchymyn syml sydd ei hangen i chi osod Moses :
 moses@ubuntu:~$ curl http://techiaith.org/moses/get/debian/install.sh | sh
 ```
 
-Bydd hyn yn achosi i lwyth o negeseuon ymddangos ar y sgrîn am gyfnod estynedig o amser.
-Ond bydd modd wedyn i chi un'ai
+Bydd hyn yn achosi i lwyth o negeseuon ymddangos ar y sgrin am gyfnod estynedig o amser.
+Ond bydd modd wedyn i chi un ai:
 
  - hyfforddi gyda data corpora yr Uned Technolegau Iaith
- - hyfforddi gyda data corpora cyfochrog eich hunain
- - [rhedeg peiriant gan yr Uned Technolegau Iaith](RhedegMoses.md)
+ - hyfforddi gyda eich data corpora cyfochrog eich hunain
+ - [rhedeg peiriant a grëwyd gan yr Uned Technolegau Iaith](RhedegMoses.md)
  
 ## Welsh English Machine Translation Moses-SMT
 
