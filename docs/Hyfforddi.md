@@ -1,23 +1,23 @@
 # Creu Peiriannau Moses-SMT
-Mae modd hyfforddi eich system Moses-SMT gyda data sy'n perthyn i'r Uned Technolegau Iaith
-neu gyda'ch eich data eich hunain. 
+Mae modd hyfforddi eich system Moses-SMT una ai gan ddefnyddio data sy'n perthyn i'r Uned Technolegau Iaith,
+neu gyda'ch eich data eich hun. 
 
-## Pam hyfforddi peiriannau gan ddefnyddio eich data eich hunain?
+## Pam hyfforddi peiriannau gan ddefnyddio eich data eich hun?
 
-Gall hyfforddi eich peiriant eich hunain gynnig y cyfle i siapio peiriant cyfieithu sy'n adlewyrchu eich anghenion arbennigol
-chi o fewn pau bennodol. Er enghraifft, os ydych yn gweithio ym maes cyllid, byddai'n bosib hyfforddi y peiriant i fod yn arbennig
-o effeithiol wrth gyfieithu cywair yn y maes hwn, gan gynnwys termau a chastrawen arbennigol y maes. 
+Gall hyfforddi eich peiriant eich hun gynnig y cyfle i siapio peiriant cyfieithu sy'n adlewyrchu eich anghenion arbenigol
+chi o fewn pau benodol. Er enghraifft, os ydych yn gweithio ym maes cyllid, byddai'n bosib hyfforddi'r peiriant i fod yn arbennig
+o effeithiol wrth gyfieithu cywair yn y maes hwn, gan gynnwys termau a chystrawen arbenigol y maes. 
 
-## Hyfforddi gyda data corpora Uned Technolegau Iaith
-Os hoffwch chi hyfforddi gan ddefnyddio data yr Uned Technolegau Iaith, sy'n dod o ffynonellau megis 
-Cofnod y Cynulliad a'r corpws Ddeddfwriaeth, yna mae na dri orchymun syml i'w defnyddio. 
+## Hyfforddi gyda data corpora yr Uned Technolegau Iaith
+Os hoffwch chi hyfforddi gan ddefnyddio data'r Uned Technolegau Iaith, sy'n dod o ffynonellau megis 
+Cofnod y Cynulliad a'r corpws Ddeddfwriaeth, yna mae tri gorchymyn syml i'w defnyddio. 
 
 Yn gyntaf mae angen estyn y data rydym yn bwriadu ei ddefnyddio:
 
 ``` sh
 moses@ubuntu:~/moses-smt$ python moses.py fetchcorpus -e CofnodYCynulliad
 ```
-Pwrpas yr ail orchymyn yw i hyfforddi a dynodi'r cyfeiriad cyfieithu (e.e. o Gymraeg i Saesneg, neu o Saesneg i'r Gymraeg). 
+Pwrpas yr ail orchymyn yw hyfforddi a dynodi'r cyfeiriad cyfieithu (e.e. o Gymraeg i Saesneg, neu o Saesneg i'r Gymraeg). 
 Byddwch angen cyfrifiadur gyda dros 4Gb o gof. Bydd y broses yn cymryd rhai oriau i gwblhau.
 
 I hyfforddi peiriant cyfieithu gan ddefnyddio data CofnodYCynulliad i gyfieithu o Saesneg i'r Gymraeg:
@@ -35,12 +35,12 @@ moses@ubuntu:~/moses-smt$ python moses.py start -e CofnodYCynulliad -s en -t cy
 [Gweler y dudalen canlynol](RhedegMoses.md) am rhagor ar sut gellir rhedeg Moses-SMT
 
 
-## Hyfforddi gyda data corpora eich hunain
+## Hyfforddi gyda data corpora eich hun
 
 Rhaid gosod eich testun fel ffeiliau testun cyfochrog o fewn is-ffolder sydd 
 wedi ei henwi ar ôl enw eich peiriant newydd;
 
-e.e. os yw'r data yn dod o hen gyfieithiadau 'Marchnata' yna defnyddiwch y gorchymyn canlynol :
+e.e. os yw'r data yn dod o hen gyfieithiadau 'Marchnata', yna defnyddiwch y gorchymyn canlynol :
 
 ```sh
 moses@ubuntu:~/moses-smt$ mkdir -p ~/moses-models/Marchnata/corpus
@@ -48,7 +48,7 @@ moses@ubuntu:~/moses-smt$ mkdir -p ~/moses-models/Marchnata/corpus
 
 Rhowch y ffeil Cymraeg o fewn ffeil gyda enw'r corpws a'r estyniad '.cy'. 
 
-Rhowch y data Saesneg o fewn ffeil sydd â'r enw'r corpws a'r estyniad '.en'. 
+Rhowch y data Saesneg o fewn ffeil gyda enw'r corpws a'r estyniad '.en'. 
 
 ```sh
 moses@ubuntu:~/moses-smt$ cd ~/moses-models/Marchnata/corpus
@@ -56,13 +56,13 @@ moses@ubuntu:~/moses-models/Marchnata/corpus$ ls
 Marchnata.cy  Marchnata.en
 ```
 
-Mae'r broses hyfforddi yn debyg i'r camau ochod, sef :
+Mae'r broses hyfforddi yn debyg i'r camau ochod, gweler :
 
 ``` sh
 moses@ubuntu:~/moses-smt$ python moses.py train -e Marchnata -s en -t cy
 ```
 
-Ac yna i'w gychwyn:
+Ac yna i'w chychwyn:
 
 ``` sh
 moses@ubuntu:~/moses-smt$ python moses.py start -e Marchnata -s en -t cy
