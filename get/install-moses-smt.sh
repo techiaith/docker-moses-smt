@@ -13,6 +13,7 @@ fi
 
 wget -O giza-pp.zip "http://github.com/moses-smt/giza-pp/archive/master.zip"
 unzip giza-pp.zip
+mv giza-pp-master giza-pp
 cd giza-pp
 make
 cd ..
