@@ -43,7 +43,7 @@ cd ../../
 export IRSTLM=$HOME/irstlm
 cd mosesdecoder
 
-num_proc=$(cat /proc/cpuinfo | grep processor | wc -l)
+num_proc=$(cat /proc/cpuinfo | grep ^processor | wc -l)
 ./bjam -j$num_proc -a --with-irstlm=$HOME/irstlm --serial --with-xmlrpc-c=/usr/ --with-cmph=/$HOME/cmph-2.0
 
 cd ..
