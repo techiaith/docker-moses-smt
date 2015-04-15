@@ -7,7 +7,8 @@ from argparse import ArgumentParser
 DEFAULT_TRAINING_DATA_URL = "http://techiaith.org/corpws/Moses"
 DEFAULT_ENGINES_URL = "http://techiaith.org/moses/3.0"
 
-MOSES_HOME = os.environ.get('MOSES_HOME', "/home/moses/")
+HOME = os.environ.get('HOME')
+MOSES_HOME = os.environ.get('MOSES_HOME', HOME)
 MOSESMODELS_HOME = os.path.join(MOSES_HOME, "moses-models")
 MTDK_HOME = os.path.join(os.path.dirname(__file__), "mtdk")
 
