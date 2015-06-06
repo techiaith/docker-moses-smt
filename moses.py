@@ -56,7 +56,7 @@ def train(engine_name, source_lang, target_lang, **args):
 	
 	script_params = ["-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name]
 
-	prepare_corpus_cmd = [script_path("mtdk-01-prepare-corpus.sh"), "-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name]
+	prepare_corpus_cmd = [script_path("mtdk-01-prepare-corpus.sh"), "-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang]
 	
 	train_lang_model_cmd = [script_path("mtdk-02-train-language-model.sh")] + script_params + ["-t", target_lang]
 	
