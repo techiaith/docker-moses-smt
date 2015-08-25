@@ -38,7 +38,7 @@ moses@ubuntu:~$ curl http://techiaith.cymru/moses/get/debian/install.sh | sh
 Bydd hyn yn achosi i lwyth o negeseuon ymddangos ar y sgrin am gyfnod estynedig o amser.
 Ond bydd modd wedyn i chi un ai:
 
- - hyfforddi gyda data corpora yr Uned Technolegau Iaith
+ - [hyfforddi gyda data corpora yr Uned Technolegau Iaith](Hyfforddi.md)
  - hyfforddi gyda eich data corpora cyfochrog eich hunain
  - [rhedeg peiriant a grëwyd gan yr Uned Technolegau Iaith](RhedegMoses.md)
  
@@ -80,6 +80,6 @@ moses@ubuntu:~$ curl http://techiaith.cymru/moses/get/debian/install.sh | sh
 Many messages will appear on the screen for some time.
 But you will then be able to either: 
 
- - train with the Language Technologies Unit's corpus data 
+ - [train with the Language Technologies Unit's corpus data](Hyfforddi.md)
  - train with the your own parallel corpus data
  - [run a machine created by the Language Technologies Unit](RhedegMoses.md)
