@@ -39,7 +39,7 @@ Bydd hyn yn achosi i lwyth o negeseuon ymddangos ar y sgrin am gyfnod estynedig 
 Ond bydd modd wedyn i chi un ai:
 
  - [hyfforddi gyda data corpora yr Uned Technolegau Iaith](Hyfforddi.md)
- - hyfforddi gyda eich data corpora cyfochrog eich hunain
+ - [hyfforddi gyda eich data corpora cyfochrog eich hunain](Hyfforddi.md#CorporaEichHun)
  - [rhedeg peiriant a grëwyd gan yr Uned Technolegau Iaith](RhedegMoses.md)
  
 ## Welsh English Machine Translation Moses-SMT
@@ -81,5 +81,5 @@ Many messages will appear on the screen for some time.
 But you will then be able to either: 
 
  - [train with the Language Technologies Unit's corpus data](Hyfforddi.md)
- - train with the your own parallel corpus data
+ - [train with the your own parallel corpus data](Hyfforddi.md#YourOwnCorpora)
  - [run a machine created by the Language Technologies Unit](RhedegMoses.md)
