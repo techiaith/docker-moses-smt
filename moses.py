@@ -42,7 +42,7 @@ def fetchcorpus(engine_name, **args):
 	prepare_engine_cmd = [script_path("mtdk-00-prepare-new-engine.sh"), "-h", MOSESMODELS_HOME, "-e", engine_name, "-u", data_url]
 	#prepare_corpus_cmd = [script_path("mtdk-01-prepare-corpus.sh"), "-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name]
 	
-	run_commands([prepare_engine_cmd, prepare_corpus_cmd])
+	run_commands([prepare_engine_cmd])
 
 def fetchengine(engine_name, source_lang, target_lang, **args):
 	"""Lawrlwytho peiriant cyfieithu o techiaith.org / Download a translation engine from techiaith.org"""
