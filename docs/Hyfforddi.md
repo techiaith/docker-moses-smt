@@ -35,7 +35,7 @@ moses@ubuntu:~/moses-smt$ python moses.py start -e CofnodYCynulliad -s en -t cy
 [Gweler y dudalen canlynol](RhedegMoses.md) am rhagor ar sut gellir rhedeg Moses-SMT
 
 
-## Hyfforddi gyda data corpora eich hun
+## <a name="CorporaEichHun"></a>Hyfforddi gyda data corpora eich hun
 
 Rhaid gosod eich testun fel ffeiliau testun cyfochrog o fewn is-ffolder sydd 
 wedi ei henwi ar ôl enw eich peiriant newydd;
@@ -104,7 +104,7 @@ moses@ubuntu:~/moses-smt$ python moses.py start -e CofnodYCynulliad -s en -t cy
 
 [See the following page](RhedegMoses.md) for more on how to run Moses-SMT
 
-## Training with your own corpus data
+## <a name="YourOwnCorpora"></a>Training with your own corpus data
  You will need to set out your text as paralell files in a sub-folder
 which is named after your new machine; 
 
