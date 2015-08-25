@@ -32,7 +32,7 @@ moses@ubuntu:~$ sudo apt-get install curl
 Dim ond un gorchymyn syml sydd ei hangen i chi osod Moses : 
 
 ```sh
-moses@ubuntu:~$ curl http://techiaith.org/moses/get/debian/install.sh | sh
+moses@ubuntu:~$ curl http://techiaith.cymru/moses/get/debian/install.sh | sh
 ```
 
 Bydd hyn yn achosi i lwyth o negeseuon ymddangos ar y sgrin am gyfnod estynedig o amser.
@@ -74,7 +74,7 @@ Many messages will appear on the screen for a short period.
 You only need one simple command to install Moses :
 
 ```sh
-moses@ubuntu:~$ curl http://techiaith.org/moses/get/debian/install.sh | sh
+moses@ubuntu:~$ curl http://techiaith.cymru/moses/get/debian/install.sh | sh
 ```
 
 Many messages will appear on the screen for some time.
