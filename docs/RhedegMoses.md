@@ -65,15 +65,15 @@ moses@ubuntu:~/moses-smt$ python moses.py
 usage: moses.py [-h] {fetchcorpus,fetchengine,train,start} ...
 moses.py: error: too few arguments
 ```
-## Running the Rhedeg Peirianau'r Uned Technolegau Iaith
+## Running the Unit's machine translation engines 
 One feature of the script is the ability to fetch and start a machine that 
-has already been trained by the Unit. The machines (and data) available from
+has already been trained by the Unit. The engines (and data) available from
 the Unit to machine translate with Moses-SMT are :
 
  * CofnodYCynulliad
  * Deddfwriaeth
  
-So in order to fetch a ready made machine, which can translate from English to
+So in order to fetch a ready made engine, which can translate from English to
 Welsh, use the sub-command 'fetchengine'. Here are the details for 'fetchengine' 
 
 ```sh
@@ -82,7 +82,7 @@ usage: moses.py fetchengine [-h] -e ENGINE_NAME -s SOURCE_LANG -t TARGET_LANG
 moses.py fetchengine: error: argument -e/--engine is required
 ```
 
-So, in order to fetch the unit's machine 'CofnodYCynulliad' which translates
+So, in order to fetch the unit's engine 'CofnodYCynulliad' which translates
 from Welsh to English, you can run the following: 
 
 ```sh
