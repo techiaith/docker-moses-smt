@@ -4,8 +4,8 @@
 import os
 from argparse import ArgumentParser
 
-DEFAULT_TRAINING_DATA_URL = "http://techiaith.org/corpws/Moses"
-DEFAULT_ENGINES_URL = "http://techiaith.org/moses/3.0"
+DEFAULT_TRAINING_DATA_URL = "http://techiaith.cymru/corpws/Moses"
+DEFAULT_ENGINES_URL = "http://techiaith.cymru/moses/3.0"
 
 HOME = os.environ.get('HOME')
 MOSES_HOME = os.environ.get('MOSES_HOME', HOME)
@@ -45,7 +45,7 @@ def fetchcorpus(engine_name, **args):
 	run_commands([prepare_engine_cmd])
 
 def fetchengine(engine_name, source_lang, target_lang, **args):
-	"""Lawrlwytho peiriant cyfieithu o techiaith.org / Download a translation engine from techiaith.org"""
+	"""Lawrlwytho peiriant cyfieithu o techiaith.cymru / Download a translation engine from techiaith.cymru"""
 
 	download_engine_cmd = [script_path("mt_download_engine.sh"),"-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang] 
 
@@ -65,6 +65,16 @@ def train(engine_name, source_lang, target_lang, **args):
 	compress_translation_cmd = [script_path("mtdk-04-compress-translation-engine-ram.sh")] + script_params + ["-s", source_lang, "-t", target_lang]
 	
 	run_commands([prepare_corpus_cmd, train_lang_model_cmd, train_translation_cmd, compress_translation_cmd])
+
+def package(engine_name, source_lang, target_lang, **args):
+
+	"""Pecynnu'r peiriant i ffeil tar.gz er mwyn hwyluso copio i gyfrifiadur arall / Package the an engine to a tar.gz file to make copying to other computers easier"""
+
+	script_params = ["-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang]
+
+	package_cmd = [script_path("mtdk-05-package.sh")] + script_params
+
+	run_commands([package_cmd])
 
 def start(engine_name, source_lang, target_lang, **args):
 	"""Cychwyn y gweinydd Moses / Start the Moses Server"""
@@ -98,6 +108,12 @@ if __name__ == "__main__":
 	startparser.add_argument('-s', '--sourcelang', dest="source_lang", required=True, help="iaith ffynhonnell")
 	startparser.add_argument('-t', '--targetlang', dest="target_lang", required=True, help="iaith targed")
 	startparser.set_defaults(func=start)
+
+	packageparser = subparsers.add_parser('package')
+	packageparser.add_argument('-e', '--engine', dest="engine_name", required=True, help="enw i'r peiriant cyfieithu benodol")
+        packageparser.add_argument('-s', '--sourcelang', dest="source_lang", required=True, help="iaith ffynhonnell")
+        packageparser.add_argument('-t', '--targetlang', dest="target_lang", required=True, help="iaith targed")
+        packageparser.set_defaults(func=package)	
 	
 	args = parser.parse_args()
 	try:
