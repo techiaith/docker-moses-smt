@@ -36,7 +36,7 @@ fi
 echo  ${MOSESMODELS_HOME}/${NAME}
 cd ${MOSESMODELS_HOME}/${NAME}
 
-tar -zcvf ${NAME}-${SOURCE_LANG}-${TARGET_LANG}.tar.gz lm/*.${TARGET_LANG} lm/*.${TARGET_LANG}.gz ${SOURCE_LANG}-${TARGET_LANG}
+tar -zcvf ${NAME}-${SOURCE_LANG}-${TARGET_LANG}.tar.gz lm/*.${TARGET_LANG} lm/*.${TARGET_LANG}.gz recaser/${TARGET_LANG}/* ${SOURCE_LANG}-${TARGET_LANG}
 
 cd -
 
