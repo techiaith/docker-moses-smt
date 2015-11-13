@@ -50,10 +50,8 @@ class Filter(object):
         if collapse_spaces:
             self.filters.append(self.__collapse_spaces)
 	
-
     def filter(self, s):
         for f in self.filters:
-	    print f
             s = f(s)
         return s
 
@@ -74,8 +72,6 @@ def json_error(status, message, traceback, version):
 
 class ExternalProcessor(object):
     """ wraps an external script and does utf-8 conversions, is thread-safe """
-    # TODO: timeout, restart-every
-
     def __init__(self, cmd):
         self.cmd = cmd
         if self.cmd != None:
@@ -87,13 +83,10 @@ class ExternalProcessor(object):
         u_string = u"%s\n" %line
         u_string = u_string.encode("utf-8")
         result = u_string  #fallback: return input
-	print self.cmd + ":\n" + u_string 
         with self._lock:
             self.proc.stdin.write(u_string)
             self.proc.stdin.flush()
-	    print "Awaiting result....."
             result = self.proc.stdout.readline()
-	    print u"Got : %s" % result
         return result.decode("utf-8").strip()
         # should be rstrip but normalize_punctiation.perl inserts space
         # for lines starting with '('
@@ -168,17 +161,14 @@ class Root(object):
         self.log_info("Request before preprocessing: %s" %repr(raw_src))
         translationDict = {"sourceText":raw_src.strip()}
        
-	# 
 	lower_src = raw_src.lower() 
 	tokenized_src = self.tokenize(lower_src)
         
 	translation = ''
 
         # query MT engine
-	print "requesting translation"
 	self.log_info("Requesting translation for %s" % repr(tokenized_src))
         result = self._translate(tokenized_src)
-	print "received translation"
         if 'text' in result:
             translation = result['text']
         else:
