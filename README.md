@@ -1,8 +1,20 @@
+
+# Moses SMT
+## Cyfieithu Peirianyddol Cymraeg <> Saesneg 
+#### Welsh <> English Machine Translation 
+
 [scroll down for english](#moses-smt-welsh--english-machine-translation)
 
-# Cyfieithu Peirianyddol Cymraeg <> Saesneg Moses-SMT
+## Cyflwyniad
+Mae'r project yma yn cynnwys cod, sgriptiau a dogfennaeth i'ch galluogi creu a defnyddio peiriannau cyfieithu Cymraeg<>Saesneg Moses-SMT eich hunain. 
 
-Mae'r project yma yn cynnwys cod, sgriptiau a dogfennaeth gysylltiedig sy'n hwyluso defnydd Moses-SMT ar gyfer y Gymraeg. 
+Mae'r sgriptiau yn hwyluso'n benodol :
+
+ * gosod Moses-SMT o docker.com
+ * gosod Moses-SMT yn uniongyrchol ar gyfrifiaduron/weinyddion Linux 
+ * llwytho i lawr a rhedeg peiriannau cyfieithu'r Uned Technolegau Iaith 
+ * creu peiriannau eich hunain ar sail casgliadau cyfieithiadau eich hunain, neu corpora cyfochrog gan yr Uned Technolegau Iaith o ffynonellau cyhoeddus, megis Cofnod y Cynulliad a'r Ddeddfwriaeth.
+ 
 
 ### Strwythur y Project
 
@@ -18,9 +30,10 @@ Mae'r project yma yn cynnwys cod, sgriptiau a dogfennaeth gysylltiedig sy'n hwyl
 ### Ffeiliau'r Project
 
 * **Dockerfile** - y ffeil a ddefnyddir i adeiladu delweddau docker
-* **docker-moses.py** - cod Python ar gyfer hwyluso rhedeg Moses o fewn Docker
-* **moses.py** - cod Python ar gyfer hwyluso defnyddio holl nodweddion Moses ar gyfrifiaduron Linux. 
-* **server.py** - cod Python sy'n darparu tudalen we syml a dirprwy at weinydd XMLRPC Mosesserver.
+* **docker-moses.py** - cod Python ar gyfer rhedeg Moses o fewn Docker
+* **moses.py** - cod Python ar gyfer defnyddio holl nodweddion Moses-SMT ar gyfrifiaduron Linux. 
+* **python-server.py** - cod Python ar gyfer darparu weinydd cyfieithu syml ar gyfer y we.
+
 
 # Moses-SMT Welsh <> English Machine Translation 
 
