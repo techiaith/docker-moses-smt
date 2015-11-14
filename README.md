@@ -14,7 +14,7 @@ Mae'r sgriptiau yn hwyluso'n benodol :
  * gosod Moses-SMT yn uniongyrchol ar gyfrifiaduron/weinyddion Linux 
  * llwytho i lawr a rhedeg peiriannau cyfieithu'r Uned Technolegau Iaith 
  * creu peiriannau eich hunain ar sail casgliadau cyfieithiadau eich hunain, neu corpora cyfochrog gan yr Uned Technolegau Iaith o ffynonellau cyhoeddus, megis Cofnod y Cynulliad a'r Ddeddfwriaeth.
- 
+
 
 ### Strwythur y Project
 
@@ -34,11 +34,19 @@ Mae'r sgriptiau yn hwyluso'n benodol :
 * **moses.py** - cod Python ar gyfer defnyddio holl nodweddion Moses-SMT ar gyfrifiaduron Linux. 
 * **python-server.py** - cod Python ar gyfer darparu weinydd cyfieithu syml ar gyfer y we.
 
+ 
+# Welsh <> English Machine Translation 
 
-# Moses-SMT Welsh <> English Machine Translation 
+This project contains code, scripts and documentation which enables you to create and use your own Welsh<>English Moses-SMT machine translation engines.  
 
-This project contains the code, scripts and related documentation which facilitates the use of Moses-SMT for Welsh.  
-
+This project in particular makes the following easier:
+ 
+ * install Moses-SMT from docker.com
+ * install Moses-SMT directly onto a Linux based computer/server
+ * download and run machine translation engines created by the Language Technologies Unit at Bangor University
+ * create your own machine translation engines with either your own translations, or the parallel corpora collected by the Language Technologies Unit from public sources, such as the Proceedings of the National Assembly for Wales and the  Legislature.
+ 
+ 
 ### The Project Structure
 
 * **docs** - contains documentation on how to use the scripts. Specifically, how to: 
