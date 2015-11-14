@@ -3,7 +3,7 @@
 ## Cyfieithu Peirianyddol Cymraeg <> Saesneg 
 #### Welsh <> English Machine Translation 
 
-[scroll down for english](#moses-smt-welsh--english-machine-translation)
+[scroll down for english](#welsh--english-machine-translation)
 
 ## Cyflwyniad
 Mae'r project yma yn cynnwys cod, sgriptiau a dogfennaeth i'ch galluogi creu a defnyddio peiriannau cyfieithu Cymraeg<>Saesneg Moses-SMT eich hunain. 
@@ -15,7 +15,7 @@ Mae'r sgriptiau yn hwyluso'n benodol :
  * llwytho i lawr a rhedeg peiriannau cyfieithu'r Uned Technolegau Iaith 
  * creu peiriannau eich hunain ar sail casgliadau cyfieithiadau eich hunain, neu corpora cyfochrog gan yr Uned Technolegau Iaith o ffynonellau cyhoeddus, megis Cofnod y Cynulliad a'r Ddeddfwriaeth.
 
-Crëwyd y project yma diolch i nawdd gan Lywodraeth Cymru a'r CyfieithuCymru - rhaglen gyfieithu gyflawn "yn y cwmwl" ar gyfer cyfieithu rhwng y Gymraeg a’r Saesneg yw CyfieithuCymru a thrwyddedi'r yn fasnachol gan Brifysgol Bangor.
+Crëwyd y project yma diolch i nawdd gan Lywodraeth Cymru a CyfieithuCymru - rhaglen gyfieithu gyflawn "yn y cwmwl" ar gyfer cyfieithu rhwng y Gymraeg a’r Saesneg yw CyfieithuCymru a thrwyddedi'r yn fasnachol gan Brifysgol Bangor.
 
 
 ## Docker
