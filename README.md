@@ -1,7 +1,7 @@
 
 # Moses SMT
 ## Cyfieithu Peirianyddol Cymraeg <> Saesneg 
-#### Welsh <> English Machine Translation 
+(Welsh <> English Machine Translation) 
 
 [scroll down for english](#welsh--english-machine-translation)
 
