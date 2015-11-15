@@ -17,6 +17,7 @@ Mae'r sgriptiau yn hwyluso'n benodol :
 
 Crëwyd y project yma diolch i nawdd gan Lywodraeth Cymru a CyfieithuCymru - rhaglen gyfieithu gyflawn "yn y cwmwl" ar gyfer cyfieithu rhwng y Gymraeg a’r Saesneg yw CyfieithuCymru a thrwyddedi'r yn fasnachol gan Brifysgol Bangor.
 
+Am ragor o wybodaeth ynghylch cyfieithu peirianyddol ac adnoddau eraill ewch i [dudalennau cyfieithu Porth Technolegau Iaith Cenedlaethol Cymru](http://techiaith.cymru/cyfieithu)
 
 ## Docker
 Mae Docker yn dechnoleg pecynnu meddalwedd a hwyluso gosod ar gyfer Linux, Mac OS X a Windows. 
@@ -66,7 +67,9 @@ This project in particular makes the following easier:
  * create your own machine translation engines with either your own translations, or the parallel corpora collected by the Language Technologies Unit from public sources, such as the Proceedings of the National Assembly for Wales and the  Legislature.
 
 This project was created thanks to funding from the Welsh Government and CyfieithuCymru (TranslateWales) - a complete translation system "in the cloud" for translating between Welsh and English and which is licensed commercially by Bangor University. 
- 
+
+More information about machine translation and other resources are available at the [Welsh National Language Technologies Portal](http://langtech.wales/translation)
+
 ## Docker
 Docker is a software packaging and installation facilitator for Linux, Mac OS X and Windows. 
 
