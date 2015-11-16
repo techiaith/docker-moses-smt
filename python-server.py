@@ -104,12 +104,15 @@ class Root(object):
 
         tokenizer = ['perl',os.path.join(moses_home,"mosesdecoder","scripts","tokenizer","tokenizer.perl"),"-b","-X","-l",slang,'-a']
         detokenizer = ['perl',os.path.join(moses_home,"mosesdecoder","scripts","tokenizer","detokenizer.perl"),"-b","-l",tlang]
-
+	detruecaser = ['perl',os.path.join(moses_home,"mosesdecoder","scripts","recaser","detruecase.perl"),"-b"]
+	
 	self._tokenizer = map(ExternalProcessor, [u' '.join(tokenizer)])
  	self._detokenizer = map(ExternalProcessor,[u' '.join(detokenizer)])
+	self._detruecaser = map(ExternalProcessor,[u' '.join(detruecaser)])
 
 	self.tokenize = self._exec(self._tokenizer)
 	self.detokenize = self._exec(self._detokenizer)
+	self.detruecase = self._exec(self._detruecaser)
 
     def _exec(self, procs):
         def f(line):
@@ -178,7 +181,8 @@ class Root(object):
 	#
 	recased_trans = self._recaser(translation)
 	detokenized_trans = self.detokenize(recased_trans)
-	translatedText = self.filter.filter(detokenized_trans)
+	detruecased_trans = self.detruecase(detokenized_trans)
+	translatedText = self.filter.filter(detruecased_trans)
 
 	translationDict = {"translatedText":translatedText}
 

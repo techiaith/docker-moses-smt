@@ -33,7 +33,6 @@ class MosesRunError(Exception):
 
 def run_commands(cmds):
 	for cmd in cmds:
-		print("cmd nesaf")
 		cmd = u" ".join(cmd)
 		print("Rhedeg %s" % cmd)
 		returncode = os.system(cmd)
