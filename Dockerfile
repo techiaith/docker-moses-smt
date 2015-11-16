@@ -60,10 +60,6 @@ WORKDIR /home/moses
 RUN mkdir moses-smt
 RUN mkdir moses-models
 
-COPY mtdk/mt_download_engine.sh /home/moses/moses-smt/mt_download_engine.sh 
-COPY python-server.py /home/moses/moses-smt/python-server.py
-COPY docker/docker-moses.py /home/moses/moses-smt/moses.py
-
 # lawrlwytho/download snapshot RELEASE-3.0 moses
 RUN wget https://github.com/moses-smt/mosesdecoder/archive/RELEASE-3.0.zip
 RUN unzip RELEASE-3.0.zip
@@ -110,6 +106,10 @@ WORKDIR /home/moses/mosesdecoder
 RUN ./bjam -a --with-irstlm=/home/moses/irstlm --serial --with-xmlrpc-c=/usr/ --with-cmph=/home/moses/cmph-2.0
 
 WORKDIR /home/moses/moses-smt
+
+COPY mtdk/mt_download_engine.sh /home/moses/moses-smt/mt_download_engine.sh
+COPY python-server.py /home/moses/moses-smt/python-server.py
+COPY docker-moses.py /home/moses/moses-smt/moses.py
 
 EXPOSE 8008
 EXPOSE 8080
