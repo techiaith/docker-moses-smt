@@ -46,8 +46,9 @@ echo "##### REORDERING TABLE #####"
 gunzip engine/model/reordering-table.wbe-msd-bidirectional-fe.gz
 cat engine/model/reordering-table.wbe-msd-bidirectional-fe | LC_ALL=C sort | ${MOSES_HOME}/mosesdecoder/bin/processLexicalTable -out engine/model/reordering-table.wbe-msd-bidirectional-fe
 
+
 echo "##### UPDATING MOSES.INI #####"
-python mt_update_compress_moses_ini.py ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini.tmp
+python ${MOSES_HOME}/moses-smt/mtdk/mt_update_compress_moses_ini.py ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini.tmp
 
 cd -
 
