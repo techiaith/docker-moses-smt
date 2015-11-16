@@ -1,0 +1,2 @@
+dockerfiles/moses-smt/*.sh
+dockerfiles/moses-smt/*.py

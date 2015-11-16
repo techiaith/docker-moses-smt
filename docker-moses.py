@@ -40,28 +40,31 @@ def run_commands(cmds):
 			raise MosesRunError(u"\n".join(exception_str))
 
 def script_path(script):
-	path = os.path.join(MTDK_HOME, script)
-	if not os.path.exists(path):
+	if not os.path.exists(script):
 		raise MosesRunError("Nid yw'r path '%s' yn bodoli.\nYdych chi wedi gosod y ffeiliau i gyd yn iawn?" % path)
-	return path
+	return script
 
 
 def fetchengine(engine_name, source_lang, target_lang, **args):
 	"""Lawrlwytho peiriant cyfieithu o techiaith.cymru / Download a translation engine from techiaith.cymru"""
 
-	download_engine_cmd = [script_path("mt_download_engine.sh"),"-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang] 
+	download_engine_cmd = [script_path("./mt_download_engine.sh"),"-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang] 
 
 	run_commands([download_engine_cmd])
 
 def start(engine_name, source_lang, target_lang, **args):
 	"""Cychwyn y gweinydd Moses / Start the Moses Server"""
 
+	source_target_lang = "%s-%s" % (source_lang, target_lang)
+	if not os.path.exists(os.path.join(MOSESMODELS_HOME, engine_name, source_target_lang)):
+		print ("Mae angen llwytho'r peiriant i lawr.... / Need to download the engine")
+		fetchengine(engine_name, source_lang, target_lang, **args)
+
 	moses_recaser_server_cmd = [os.path.join(MOSES_HOME, "mosesdecoder","bin","mosesserver"), \
 		"-f", os.path.join(MOSESMODELS_HOME, engine_name, "recaser", target_lang, "moses.ini"),\
 		"--server-port",str(RECASER_PORT),\
 		"&"]
 	
-	source_target_lang = "%s-%s" % (source_lang, target_lang)
 	moses_server_cmd = [os.path.join(MOSES_HOME, "mosesdecoder", "bin", "mosesserver"), \
 		"-f",\
 		os.path.join(MOSESMODELS_HOME, engine_name, source_target_lang, "engine", "model", "moses.ini"),\
