@@ -179,7 +179,11 @@ class Root(object):
 	self.log_info("Received translation: %s" % repr(translation))
 
 	#
-	recased_trans = self._recaser(translation)
+	recased_result = self._recaser(translation)
+	if 'text' in recased_result:
+		recased_trans=recased_result['text']
+	else:
+		recased_trans=translation	
 	detokenized_trans = self.detokenize(recased_trans)
 	detruecased_trans = self.detruecase(detokenized_trans)
 	translatedText = self.filter.filter(detruecased_trans)
