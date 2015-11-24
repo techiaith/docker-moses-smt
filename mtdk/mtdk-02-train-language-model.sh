@@ -35,8 +35,8 @@ export IRSTLM=${MOSES_HOME}/irstlm
 cd ${MOSESMODELS_HOME}/${NAME}/lm
 
 echo "##### INSERT START AND END BOUNDARIES #####"
-echo "${MOSES_HOME}/irstlm/bin/add-start-end.sh < ../corpus/${NAME}.${TARGET_LANG} > ${NAME}.sb.${TARGET_LANG}"
-${MOSES_HOME}/irstlm/bin/add-start-end.sh < ../corpus/${NAME}.${TARGET_LANG} > ${NAME}.sb.${TARGET_LANG}
+echo "${MOSES_HOME}/irstlm/bin/add-start-end.sh < ../corpus/${NAME}.clean.${TARGET_LANG} > ${NAME}.sb.${TARGET_LANG}"
+${MOSES_HOME}/irstlm/bin/add-start-end.sh < ../corpus/${NAME}.clean.${TARGET_LANG} > ${NAME}.sb.${TARGET_LANG}
 
 if ! [ $? -eq 0 ] 
 then

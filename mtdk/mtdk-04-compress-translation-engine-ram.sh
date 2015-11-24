@@ -47,18 +47,15 @@ gunzip engine/model/reordering-table.wbe-msd-bidirectional-fe.gz
 cat engine/model/reordering-table.wbe-msd-bidirectional-fe | LC_ALL=C sort | ${MOSES_HOME}/mosesdecoder/bin/processLexicalTable -out engine/model/reordering-table.wbe-msd-bidirectional-fe
 
 
-echo "##### YOU MUST NOW EDIT MOSES.INI AT : "
-echo "${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini"
-echo "#####"
-echo ""
-echo "#PhraseDictionaryMemory name=TranslationModel0 num-features=4 path=${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/phrase-table.gz input-factor=0 output-factor=0"
-echo ""
-echo "PhraseDictionaryCompact name=TranslationModel0 num-features=4 path=${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/phrase-table.minphr input-factor=0 output-factor=0"
-echo ""
-echo ""
-echo "#LexicalReordering name=LexicalReordering0 num-features=6 type=wbe-msd-bidirectional-fe-allff input-factor=0 output-factor=0 path=${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/reordering-table.wbe-msd-bidirectional-fe.gz"
-echo ""
-echo "LexicalReordering name=LexicalReordering0 num-features=6 type=wbe-msd-bidirectional-fe-allff input-factor=0 output-factor=0 path=${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/reordering-table.wbe-msd-bidirectional-fe"
+echo "##### UPDATING MOSES.INI #####"
+python ${MOSES_HOME}/moses-smt/mtdk/mt_update_compress_moses_ini.py ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model/moses.ini.tmp
 
 cd -
 
+cd ${MOSESMODELS_HOME}/${NAME}/${SOURCE_LANG}-${TARGET_LANG}/engine/model
+
+mv moses.ini moses.ini.orig
+mv moses.ini.tmp moses.ini
+
+cd -
+ 

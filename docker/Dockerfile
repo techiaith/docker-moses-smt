@@ -44,21 +44,21 @@ RUN apt-get update && apt-get install -q -y \
 	libbz2-dev \
 	libboost-all-dev \
 	libxmlrpc-core-c3-dev \
-	libxmlrpc-c++8-dev
+	libxmlrpc-c++8-dev \
+	python-pip
 ENV LANGUAGE cy_GB.UTF-8
 ENV LANG cy_GB.UTF-8
 ENV LC_ALL cy_GB.UTF-8 
 RUN locale-gen cy_GB.UTF-8
 RUN dpkg-reconfigure locales
 
+RUN pip install cherrypy
+RUN pip install python-Levenshtein
+
 RUN mkdir -p /home/moses
 WORKDIR /home/moses
 RUN mkdir moses-smt
 RUN mkdir moses-models
-
-COPY mtdk/mt_download_engine.sh /home/moses/moses-smt/mt_download_engine.sh 
-COPY server.py /home/moses/moses-smt/server.py
-COPY docker-moses.py /home/moses/moses-smt/moses.py
 
 # lawrlwytho/download snapshot RELEASE-3.0 moses
 RUN wget https://github.com/moses-smt/mosesdecoder/archive/RELEASE-3.0.zip
@@ -106,6 +106,10 @@ WORKDIR /home/moses/mosesdecoder
 RUN ./bjam -a --with-irstlm=/home/moses/irstlm --serial --with-xmlrpc-c=/usr/ --with-cmph=/home/moses/cmph-2.0
 
 WORKDIR /home/moses/moses-smt
+
+COPY mt_download_engine.sh /home/moses/moses-smt/mt_download_engine.sh
+COPY python-server.py /home/moses/moses-smt/python-server.py
+COPY moses.py /home/moses/moses-smt/moses.py
 
 EXPOSE 8008
 EXPOSE 8080
