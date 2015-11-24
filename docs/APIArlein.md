@@ -1,9 +1,9 @@
 
-Scroll down for english](#moses-smt-online-api)
+[Scroll down for english](#moses-smt-online-api)
 
 # API Cyfieithu Peirianyddol Moses-SMT
 
-Mae swyddogaethau ein peiriannau cyfieithu ar gael dros y we o'r Canolfan APIs [gweler https://api.techiaith.org](https://api.techiaith.org). Mae'r API yn gweithio dros HTTPS GET, felly gellir defnyddio unrhyw iaith/meddalwedd HTTP er mwyn cysylltu at yr API. 
+Mae swyddogaethau peiriannau cyfieithu y storfa hon ar gael dros y we o'r Canolfan APIs [gweler https://api.techiaith.org](https://api.techiaith.org). Mae'r API yn gweithio dros HTTPS GET, felly gellir defnyddio unrhyw iaith/meddalwedd HTTP er mwyn cysylltu at yr API. 
 
 ## Tiwtorialau
 
@@ -141,56 +141,54 @@ The connection to the API is over HTTPS only, from the domain `api.techiaith.org
 
 ## API Parameters
 
-| Parameter   | Description | Notes |
-|------------|------------|----------|
-| `api_key`  | Your API key, from the API Centre (https://api.techiaith.org) | required |
-| `text`     | The text to POS tag. Formatted according to RFC 3986 (percent-encoded) | required | `max_errors` | Maximum number of errors you want returned for your text. Default: 1. If you want to return all errors, use `max_errors=0` | optional |
-| `lang`     | The language for any text returned by the API (e.e. grammar suggestion sentences, error messages). Choices: `en` or `cy`. Default: `cy` | optional |
-| `callback` | Name of the function to wrap the response in for a JSON-P callback (see below) | optional |
+| Parameter     | Description | Notes |
+|--------------|------------|----------|
+| `api_key`    |  Your API key, from the API Centre (https://api.techiaith.org) | required |
+| `q`       | The text to be translated. Formatted according to RFC 3986 (percent-encoded)  | required |
+| `engine` | The name of the engine to be used for translation.  Choices are :  `CofnodYCynulliad` or `Deddfwriaeth` | required |
+| `source` | The source text's language. Choices are `en` or `cy`. | required |
+| `target` | The target language for any translations returned by the API.  Choices are `en` or `cy`. | required |
+| `callback`   | Name of the function to wrap the response in for a JSON-P callback (see below)  | optional |
+
 
 ### Example
 
-
 ```
-$ curl https://api.techiaith.org/cysill/v1/?api_key=123&text==mae%20hen%20gwlad%20fy%20tadau&max_errors=2
+$ curl https://api.techiaith.org/translate/v1/translate?api_key=123&q=Will+the+Minister+make+a+statement&engine=CofnodYCynulliad&source=en&target=cy
 
 {
     "success": true,
-    "result": [
-        {"isSpelling": false, "start": 4, "length": 9, "suggestions": ["hen wlad"], "message": "Mae 'hen' yn achosi treiglad meddal"},
-        {"isSpelling": false, "start": 14, "length": 8, "suggestions": ["fy nhadau"], "message": "Mae 'tadau' yn treiglo'n drwynol ar \u00f4l 'fy'"}],
+    "translations": [
+        {"translatedText": "A wnaiff y Gweinidog wneud datganiad"},
+    ],
     "version": 1
 }
 ```
-## Results
 
 ## JSON-P Callbacks
 
 You can use the API with JSON-P callbacks by adding the parameter `callback` to your request:
 
 ```
-$ curl https://api.techiaith.org/cysill/v1/?api_key=rhywbeth&text=mae%20hen%20wlad%20fy%20nhadau&callback=foo
+$ curl https://api.techiaith.org/translate/v1/translate?api_key=123&q=Will+the+Minister+make+a+statement&engine=CofnodYCynulliad&source=en&target=cy&callback=foo
 foo({
-    "result": [
-        {"length": 8, "message": "Mae 'tadau' yn treiglo'n drwynol ar \u00f4l 'fy'", "start": 13, "suggestions": ["fy nhadau"], "isSpelling": false}
-        ],
-    "version": 1,
-    "success": true
+	"success": true,
+	"translations": [
+		{"translatedText": "A wnaiff y Gweinidog wneud datganiad"},
+	],
+    	"version": 1
 });
 ```
 
 
 ## Rate Limiting
 
-The API has a limit on the number of requests you can make per hour, linked to your API key.
-
-You are initially given a high number of requests per hour, which we believe will be enough for most of our users.
-If you would like to increase the number of requests you can make to the API per hour, use the form within the 'API Centre'.
+The API has a limit on the number of requests you can make per hour, linked to your API key. If you would like to increase the number of requests you can make to the API per hour, use the form within the 'API Centre'.
 
 You can view the number of requests you have made/have remaining at any time by looking at the 'HTTP headers' of any response to the API:
 
 ```
-$ curl -i https://api.techiaith.org/cysill/v1/?api_key=rhywbeth&text=un%20dau%20tri                                                            
+$ curl -i https://api.techiaith.org/translate/v1/translate?api_key=123&q=Will+the+Minister+make+a+statement&engine=CofnodYCynulliad&source=en&target=cy                                                           
 
 HTTP/1.1 200 OK
 Date: Mon, 17 Nov 2014 14:41:21 GMT
@@ -220,7 +218,7 @@ Date 2014-11-17T15:16:39.000Z
 Once you go over the rate limit you will receive an error response:
 
 ```
-$ curl -i https://api.techiaith.org/cysill/v1/?api_key=123&text=mae%20hen%20gwlad%20fy%20tadau&lang=en
+$ curl -i curl https://api.techiaith.org/translate/v1/translate?api_key=123&q=Will+the+Minister+make+a+statement&engine=CofnodYCynulliad&source=en&target=cy
 
 HTTP/1.1 200 OK
 Date: Tue, 18 Nov 2014 10:44:37 GMT
