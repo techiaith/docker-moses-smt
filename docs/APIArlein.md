@@ -1,5 +1,5 @@
 
-[Scroll down for english](#moses smt machine translation online api)
+[Scroll down for english](#moses_smt_machine_translation_online_api)
 
 # API Cyfieithu Peirianyddol Moses-SMT
 
