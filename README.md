@@ -49,10 +49,10 @@ docker run --name moses-smt-cofnodycynulliad-en-cy -p 8008:8008 -p 8080:8080 tec
 
 ### Ffeiliau'r Project
 
-* **Dockerfile** - y ffeil a ddefnyddir i adeiladu delweddau docker
-* **docker-moses.py** - cod Python ar gyfer rhedeg Moses o fewn Docker
 * **moses.py** - cod Python ar gyfer defnyddio holl nodweddion Moses-SMT ar gyfrifiaduron Linux. 
 * **python-server.py** - cod Python ar gyfer darparu gweinydd cyfieithu syml ar gyfer y we.
+* **docker/Dockerfile** - y ffeil a ddefnyddir i adeiladu delweddau docker
+* **docker/moses.py** - cod Python ar gyfer rhedeg Moses o fewn Docker
 
 
 # Welsh <> English Machine Translation 
@@ -100,7 +100,7 @@ docker run --name moses-smt-cofnodycynulliad-en-cy -p 8008:8008 -p 8080:8080 tec
 
 ### The Project Files
 
-* **Dockerfile** - the file that is used to create docker images
-* **docker-moses.py** - the Python code used to enable running Moses within Docker
 * **moses.py** - Python code for enabling the use of all of Moses' features on a Linux computers. 
 * **server.py** - Python code for providing a simple web page and a proxy XMLRPC Mosesserver server.
+* **docker/Dockerfile** - the file that is used to create docker images
+* **docker/moses.py** - the Python code used to enable running Moses within Docker
