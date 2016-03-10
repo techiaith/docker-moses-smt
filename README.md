@@ -1,9 +1,8 @@
 
 # Moses SMT
 ## Cyfieithu Peirianyddol Cymraeg <> Saesneg 
-(Welsh <> English Machine Translation) 
 
-[click here for english README](#README_en.md)
+[click here for English README](README_en.md)
 
 ## Cyflwyniad
 
