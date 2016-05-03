@@ -63,14 +63,14 @@ def fetchengine(engine_name, source_lang, target_lang, **args):
 
 	run_commands([download_engine_cmd])
 
-def train(engine_name, source_lang, target_lang, **args):
+def train(engine_name, ngram_size, source_lang, target_lang, **args):
 	"""Hyfforddi model iaith Moses / Train Moses' language model"""
 	script_params = ["-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name]
 
 	prepare_corpus_cmd = [script_path("mtdk-01-prepare-corpus.sh"), "-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang]
 	train_lang_model_cmd = [script_path("mtdk-02-train-language-model.sh")] + script_params + ["-t", target_lang]
 	train_recaser_model_cmd = [script_path("mtdk-02-train-recaser-model.sh")] + script_params + ["-t", target_lang]
-	train_translation_cmd = [script_path("mtdk-03-train-translation-engine.sh")] + script_params + ["-s", source_lang, "-t", target_lang]
+	train_translation_cmd = [script_path("mtdk-03-train-translation-engine.sh")] + script_params + ["-n", ngram_size, "-s", source_lang, "-t", target_lang]
 	compress_translation_cmd = [script_path("mtdk-04-compress-translation-engine-ram.sh")] + script_params + ["-s", source_lang, "-t", target_lang]
 	
 	run_commands([prepare_corpus_cmd, train_lang_model_cmd, train_recaser_model_cmd, train_translation_cmd, compress_translation_cmd])
@@ -127,6 +127,7 @@ if __name__ == "__main__":
 	
 	trainparser = subparsers.add_parser('train')
 	trainparser.add_argument('-e', '--engine', dest="engine_name", required=True, help="enw i'r peiriant cyfieithu benodol")
+	trainparser.add_argument('-n', '--ngramsize', dest="ngram_size", default=3, help="maint ngrams - 3,4,5,6 neu 7")
 	trainparser.add_argument('-s', '--sourcelang', dest="source_lang", required=True, help="iaith ffynhonnell")
 	trainparser.add_argument('-t', '--targetlang', dest="target_lang", required=True, help="iaith targed")
 	trainparser.set_defaults(func=train)
