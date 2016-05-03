@@ -5,6 +5,7 @@ import threading
 import subprocess
 import cherrypy
 import json
+import itertools
 import logging
 import time
 import re
@@ -36,13 +37,9 @@ def init_log(filename):
     fh.setFormatter(formatter)
     logger.addHandler(fh)
 
-def geometric_mean(log_probs):
-    try:
-        return math.exp(sum(log_probs)) ** (1./len(log_probs))
-    except:
-        return 0
 
 class Filter(object):
+
     def __init__(self, remove_newlines=True, collapse_spaces=True):
         self.filters = []
         if remove_newlines:
@@ -70,7 +67,9 @@ def json_error(status, message, traceback, version):
     err = {"status":status, "message":message, "traceback":traceback, "version":version}
     return json.dumps(err, sort_keys=True, indent=4)
 
+
 class ExternalProcessor(object):
+
     """ wraps an external script and does utf-8 conversions, is thread-safe """
     def __init__(self, cmd):
         self.cmd = cmd
@@ -90,6 +89,7 @@ class ExternalProcessor(object):
         return result.decode("utf-8").strip()
         # should be rstrip but normalize_punctiation.perl inserts space
         # for lines starting with '('
+
 
 class Root(object):
 
@@ -159,6 +159,8 @@ class Root(object):
         response.headers['Content-Type'] = 'application/json'
 
         q = self.filter.filter(kwargs["q"])
+        callback = kwargs["callback"]
+
         raw_src = q
         self.log("The server is working on: %s" %repr(raw_src))
         self.log_info("Request before preprocessing: %s" %repr(raw_src))
@@ -183,7 +185,8 @@ class Root(object):
 	if 'text' in recased_result:
 		recased_trans=recased_result['text']
 	else:
-		recased_trans=translation	
+		recased_trans=translation
+	
 	detokenized_trans = self.detokenize(recased_trans)
 	detruecased_trans = self.detruecase(detokenized_trans)
 	translatedText = self.filter.filter(detruecased_trans)
@@ -192,8 +195,12 @@ class Root(object):
 
         data = {"data" : {"translations" : [translationDict]}}
         self.log("The server is returning: %s" %self._dump_json(data))
-        
-	return self._dump_json(data)
+
+        if callback:
+            return callback + "(" + self._dump_json(data) + ");"
+        else:
+	    return self._dump_json(data)
+
 
     def log_info(self, message):
         if self.verbose > 0:
@@ -202,6 +209,87 @@ class Root(object):
     def log(self, message, level=logging.INFO):
         logger = logging.getLogger('translation_log.info')
         logger.info(message)
+
+
+    @cherrypy.expose
+    def index(self):
+	return """
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.js"></script>
+<script>
+var app = angular.module("MosesApp", ["ngResource"]);
+app.controller('MosesCtrl', function($scope, $http) {
+	$scope.loading = false;
+	$scope.translate = function(engine, sourcelanguage, targetlanguage) {		
+		$scope.loading=true;
+		$translatedText="";
+		$http.jsonp('http://localhost:' + location.port + '/translate?callback=JSON_CALLBACK', {
+			params: {
+					q:$scope.sourceText 							
+				}
+			})
+			.success(function(response){
+				$scope.translatedText=response.data.translations[0].translatedText;
+				$scope.loading=false;
+			})
+			.error(function(response){
+				$scope.loading=false;
+				console.log("Error");
+		});
+		
+  	};
+});
+</script>
+<style>
+.logos {
+ 	background-color: #333333;
+    	height: 90px;
+}
+
+.uti {
+    float: left;
+    padding-left: 32px;
+    padding-top: 12px;
+}
+
+.pb {
+    float: right;
+    padding-right: 24px;
+    padding-top: 12px;
+}
+h1, p, textarea {
+ 	font-family: "Vectora W02_55 Roman","Voces";
+}
+
+</style>
+</head>
+<body>
+<div class="logos">
+	<div class="uti"><a href="http://www.bangor.ac.uk"><img src="http://geiriadur.bangor.ac.uk/skins/GeiriadurBangor/images/pb.jpg"></a></div>
+	<div class="pb"><a href="http://techiaith.bangor.ac.uk"><img src="http://geiriadur.bangor.ac.uk/skins/GeiriadurBangor/images/uti.jpg"></a></div>
+</div>
+
+<h1>DEMO CYFIEITHU PEIRIANYDDOL ~ MACHINE TRANSLATION DEMO</h1>
+
+<div ng-app="MosesApp">
+	<div ng-controller="MosesCtrl">
+		<table width="100%" style="margin:auto"><tr>
+		<td width="45%">
+	        	<textarea ng-model="sourceText" style="width:100%" rows=5 placeholder="Testun i'w gyfieithu"></textarea>	
+		</td>
+		<td width="10%" style="vertical-align:top">
+	                <button ng-click="translate()">Cyfieithu ~ Translate >> </button>
+			<img ng-show="loading" src="http://techiaith.cymru/wp-content/uploads/2015/11/ripple.gif"/>
+		</td>
+		<td width="45%" style="vertical-align:top">                	        	
+                	<p ng-bind="translatedText" style="font-size:2em;"></p>                	
+		</td></tr></table>				
+	</div>    
+</div>
+
+"""
 
 if __name__ == "__main__":
 
