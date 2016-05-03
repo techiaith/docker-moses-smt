@@ -31,6 +31,10 @@ Here's an example of how to use the Dockerized Moses-SMT to download and run an 
 ```sh
 docker run --name moses-smt-cofnodycynulliad-en-cy -p 8008:8008 -p 8080:8080 techiaith/moses-smt start -e CofnodYCynulliad -s en -t cy
 ```
+
+Then go to the machine translation engine's demo page in order to see it at work: http://localhost:8008
+
+
 ### The Project Structure
 
 * **docs** - contains documentation on how to use the scripts. Specifically, how to: 
