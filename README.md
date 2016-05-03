@@ -34,6 +34,9 @@ Dyma enghraifft o sut mae defnyddio'r Moses-SMT o fewn Docker er mwyn rhedeg pei
 docker run --name moses-smt-cofnodycynulliad-en-cy -p 8008:8008 -p 8080:8080 techiaith/moses-smt start -e CofnodYCynulliad -s en -t cy
 ```
 
+Yna, ewch i dudalen demo y peiriant er mwyn ei weld ar waith : http://localhost:8008 
+
+
 
 ### Strwythur y Project
 
