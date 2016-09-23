@@ -52,7 +52,7 @@ ENV LC_ALL cy_GB.UTF-8
 RUN locale-gen cy_GB.UTF-8
 RUN dpkg-reconfigure locales
 
-RUN pip install cherrypy
+RUN pip install cherrypy==7.1.0
 RUN pip install python-Levenshtein
 
 RUN mkdir -p /home/moses
