@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import os
 from argparse import ArgumentParser
 
@@ -66,11 +65,12 @@ def fetchengine(engine_name, source_lang, target_lang, **args):
 def train(engine_name, ngram_size, source_lang, target_lang, **args):
 	"""Hyfforddi model iaith Moses / Train Moses' language model"""
 	script_params = ["-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name]
+	str_ngram_size = str(ngram_size)
 
 	prepare_corpus_cmd = [script_path("mtdk-01-prepare-corpus.sh"), "-m", MOSES_HOME, "-h", MOSESMODELS_HOME, "-e", engine_name, "-s", source_lang, "-t", target_lang]
 	train_lang_model_cmd = [script_path("mtdk-02-train-language-model.sh")] + script_params + ["-t", target_lang]
 	train_recaser_model_cmd = [script_path("mtdk-02-train-recaser-model.sh")] + script_params + ["-t", target_lang]
-	train_translation_cmd = [script_path("mtdk-03-train-translation-engine.sh")] + script_params + ["-n", ngram_size, "-s", source_lang, "-t", target_lang]
+	train_translation_cmd = [script_path("mtdk-03-train-translation-engine.sh")] + script_params + ["-n", str_ngram_size, "-s", source_lang, "-t", target_lang]
 	compress_translation_cmd = [script_path("mtdk-04-compress-translation-engine-ram.sh")] + script_params + ["-s", source_lang, "-t", target_lang]
 	
 	run_commands([prepare_corpus_cmd, train_lang_model_cmd, train_recaser_model_cmd, train_translation_cmd, compress_translation_cmd])
