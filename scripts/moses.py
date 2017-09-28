@@ -13,11 +13,11 @@ MTDK_HOME = os.path.join(os.path.dirname(__file__), "mtdk")
 SERVER_HOME = os.path.join(os.path.dirname(__file__))
 
 # host/port to hose this server (for access thru browsers)
-HOST = '127.0.0.1'
+HOST = '0.0.0.0'
 PORT = 8008
 
 # host/post for your Moses XMLRPC server
-MOSES_HOST = 'http://127.0.0.1'
+MOSES_HOST = 'http://0.0.0.0'
 MOSES_PORT = 8080
 RECASER_PORT = 8081
 MOSES_URL = MOSES_HOST + ":" + str(MOSES_PORT) + "/RPC2"
