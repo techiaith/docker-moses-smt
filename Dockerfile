@@ -47,8 +47,9 @@ RUN apt-get update && apt-get install -q -y --no-install-recommends \
 	libboost-all-dev \
 	libxmlrpc-core-c3-dev \
 	libxmlrpc-c++8-dev \
-	python-pip \
-	python-setuptools \
+        python3-pip \
+	python3-setuptools \
+	python3-dev \
 	&& apt-get clean \ 
         && rm -rf /var/lib/apt/lists/*
 
@@ -59,8 +60,8 @@ RUN sed -i -e 's/# cy_GB.UTF-8 UTF-8/cy_GB.UTF-8 UTF-8/' /etc/locale.gen && \
 
 ENV LANG cy_GB.UTF-8
 
-RUN pip install cherrypy==7.1.0
-RUN pip install python-Levenshtein
+RUN pip3 install cherrypy
+RUN pip3 install python-Levenshtein
 
 RUN mkdir -p /home/moses
 RUN mkdir -p /home/moses/moses-models
