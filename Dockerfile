@@ -79,10 +79,10 @@ RUN unzip RELEASE-3.0.zip
 RUN rm RELEASE-3.0.zip
 RUN mv mosesdecoder-RELEASE-3.0 mosesdecoder
 
-RUN wget -O giza-pp.zip http://github.com/moses-smt/giza-pp/archive/master.zip 
+RUN wget -O giza-pp.zip http://github.com/moses-smt/giza-pp/archive/228a39b94ff61f41f36a15ce0194dadc69dc0e36.zip 
 RUN unzip giza-pp.zip
 RUN rm giza-pp.zip
-RUN mv giza-pp-master giza-pp
+RUN mv giza-pp-228a39b94ff61f41f36a15ce0194dadc69dc0e36 giza-pp
 WORKDIR /home/moses/giza-pp
 RUN make
 
