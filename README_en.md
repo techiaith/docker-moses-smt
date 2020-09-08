@@ -2,7 +2,7 @@
 
 If you have Docker installed on your computer [Get Started with Docker](https://docs.docker.com/windows/) then there is a very easy method by which you can install and use machine translation engines locally. There are only two commands involved. 
 
-## Command 1 : Installing Moses-SMT 
+### Command 1 : Installing Moses-SMT 
 
 ```
  $ docker pull techiaith/moses-smt
@@ -11,7 +11,7 @@ If you have Docker installed on your computer [Get Started with Docker](https://
 This will download and install a Moses machine translation system within your Docker environment.
 
 
-## Command 2 : Start a Machine Translation Engine of your Choice
+### Command 2 : Start a Machine Translation Engine of your Choice
 
 The Language Technologies Unit have created machine translation engines that have been trained from bilingual data that we have collected from open and public sources, such as the Proceedings of the Welsh Assembly, the UK and Welsh Legislature website, as well as localisations of open source software. Each in turn provide domain specific machine translation capabilities. Each one is identified according to its Welsh name. Thus:
 
@@ -29,7 +29,7 @@ In the case of CofnodYCynulliad, the engine may be a very large download - about
 
 Open your browser and browse to [http://localhost:8008](http://localhost:8008), where you should see a simple demo form that will help you check if the engine is working or not.
 
-## Installing and Running from GitHub
+# Installing and Running from GitHub
 
 To download and install from GitHub: 
 
@@ -48,7 +48,7 @@ and then:
 
 The running Docker container will respond to JSON requests on port 8008 as well as XMLRPC on port 8080.
 
-# Hyfforddi Modelau Cyfieithu Newydd 
+# Train New Machine Translation Engines
 
 It's possible to train your onw Moses-SMT translation engines with data by the Language Technologies Unit or your own.
 
