@@ -1,54 +1,63 @@
-#Moses-SMT
-## Welsh <> English Machine Translation 
+# Moses-SMT with Docker
 
-This project contains code, scripts and documentation which enables you to create and use your own Welsh<>English Moses-SMT machine translation engines.  
+If you have Docker installed on your computer [Get Started with Docker](https://docs.docker.com/windows/) then there is a very easy method by which you can install and use machine translation engines locally. There are only two commands involved. 
 
-## Introduction
-This project in particular makes the following easier:
+## Command 1 : Installing Moses-SMT 
+
+```
+ $ docker pull techiaith/moses-smt
+```
+
+This will download and install a Moses machine translation system within your Docker environment.
+
+
+## Command 2 : Start a Machine Translation Engine of your Choice
+
+The Language Technologies Unit have created machine translation engines that have been trained from bilingual data that we have collected from open and public sources, such as the Proceedings of the Welsh Assembly, the UK and Welsh Legislature website, as well as localisations of open source software. Each in turn provide domain specific machine translation capabilities. Each one is identified according to its Welsh name. Thus:
+
+ - CofnodYCynulliad  : as trained from the Welsh Assembly Proceedings
+ - Deddfwriaeth  : as trained from UK and Welsh legislature
+ - Meddalwedd : as trained from localisations of various open source software projects. 
  
- * install Moses-SMT from docker.com
- * install Moses-SMT directly onto a Linux based computer/server
- * download and run machine translation engines created by the Language Technologies Unit at Bangor University
- * create your own machine translation engines with either your own translations, or the parallel corpora collected by the Language Technologies Unit from public sources, such as the Proceedings of the National Assembly for Wales and the  Legislature.
+These names can be used in the second Docker command that will start (and fetch is necessary from the Welsh National Language Technologies Portal) an engine for a desired source and target language pairing:
 
-This project was created thanks to funding from the Welsh Government and CyfieithuCymru (TranslateWales) - a complete translation system "in the cloud" for translating between Welsh and English and which is licensed commercially by Bangor University. 
-
-More information about machine translation and other resources are available at the Welsh National Language Technologies Portal - [langtech.wales/translation](http://langtech.wales/translation)
-
-## Docker
-Docker is a software packaging and installation facilitator for Linux, Mac OS X and Windows. 
-
-The following Docker command will install Moses-SMT onto your computer: 
-
-Dyma enghraifft o sut mae defnyddio'r Moses-SMT o fewn Docker er mwyn rhedeg peiriant cyfieithu (ar sail corpws cyfochrog CofnodYCynulliad), sy'n cyfieithu o'r Saesneg i'r Gymraeg :
-
-```sh
-docker pull techiaith/moses-smt
+```
+ $ docker run --name moses-smt-cofnodycynulliad-en-cy -p 8080:8080 -p 8008:8008 techiaith/moses-smt start -e CofnodYCynulliad -s en -t cy
 ```
 
-Here's an example of how to use the Dockerized Moses-SMT to download and run an engine (based on our National Assembly for Wales parallel corpus - named CofnodYCynulliad) for machine translating from English to Welsh: 
+In the case of CofnodYCynulliad, the engine may be a very large download - about 3Gb. 
+
+Open your browser and browse to [http://localhost:8008](http://localhost:8008), where you should see a simple demo form that will help you check if the engine is working or not.
+
+## Installing and Running from GitHub
+
+To download and install from GitHub: 
 
 ```sh
-docker run --name moses-smt-cofnodycynulliad-en-cy -p 8008:8008 -p 8080:8080 techiaith/moses-smt start -e CofnodYCynulliad -s en -t cy
+ $ git clone https://github.com/porthtechnolegauiaith/moses-smt
+ $ cd moses-smt
+ $ make
 ```
 
-Then go to the machine translation engine's demo page in order to see it at work: http://localhost:8008
+and then: 
+
+```sh
+ $ make run
+ $ python moses.py start -e CofnodYCynulliad -s en -t cy
+```
+
+The running Docker container will respond to JSON requests on port 8008 as well as XMLRPC on port 8080.
+
+# Hyfforddi Modelau Cyfieithu Newydd 
+
+It's possible to train your onw Moses-SMT translation engines with data by the Language Technologies Unit or your own.
+
+Training your own translation machine could be an opportunity to create a machine that can reflect your specific needs within the field in which you work. For example, if you worked in finance, it would be possible to train your machine to be particularly effective at translating the register of this domain, including the field's own particular terminology and syntax.
+
+See [Create Moses-SMT Engines](https://github.com/PorthTechnolegauIaith/moses-smt/blob/master/docs/Training.md)
 
 
-### The Project Structure
 
-* **docs** - contains documentation on how to use the scripts. Specifically, how to: 
-  * install Moses-SMT from docker.com and download the Language Technologies Unit's translation packages [click here...](docs/Docker.md)
-  * install Moses-SMT on a normal computer - [click here...](docs/GosodiadArferol.md)
-  * run Moses-SMT on a normal computer - [click here...](docs/RhedegMoses.md) 
-  * train Moses-SMT and create your own engines - [click here...](docs/Hyfforddi.md)
-  
-* **get** - contains scripts that are necessary to prepare and install Moses-SMT on a Linux computer
-* **mtdk** - containts the scripts that support Moses-SMT's training features
 
-### The Project Files
 
-* **moses.py** - Python code for enabling the use of all of Moses' features on a Linux computers. 
-* **server.py** - Python code for providing a simple web page and a proxy XMLRPC Mosesserver server.
-* **docker/Dockerfile** - the file that is used to create docker images
-* **docker/moses.py** - the Python code used to enable running Moses within Docker
+
