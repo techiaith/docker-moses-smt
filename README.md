@@ -1,7 +1,5 @@
 # Moses-SMT hefo Docker
 
-(please scroll down for English)
-
 Os yw Docker wedi ei osod ar eich cyfrifiadur [Get Started with Docker](https://docs.docker.com/windows/) yna dyma modd hwylus iawn i chi osod a ddefnyddio cyfieithu peirianyddol Cymraeg gyda Moses-SMT . 
 
 Dim ond 2 orchymun sydd ei angen.
@@ -50,7 +48,7 @@ ac yna i redeg peiriant cyfieithu parod:
 
 Bydd y rhith weinydd Docker yn ymateb i geisiadau JSON ar borth 8008 yn ogystal i XMLRPC ar borth 8080.
 
-## Hyfforddi modelau cyfieithu newydd 
+# Hyfforddi Modelau Cyfieithu Newydd 
 
 Mae modd hyfforddi peiriannau cyfieithu Moses-SMT eich hunain una ai gan ddefnyddio data gan yr Uned Technolegau Iaith, neu gyda'ch eich data eich hun.
 
