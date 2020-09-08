@@ -1,5 +1,7 @@
 # Moses-SMT hefo Docker
 
+[>> English README](README_en.md)
+
 Os yw Docker wedi ei osod ar eich cyfrifiadur [Get Started with Docker](https://docs.docker.com/windows/) yna dyma modd hwylus iawn i chi osod a ddefnyddio cyfieithu peirianyddol Cymraeg gyda Moses-SMT . 
 
 Dim ond 2 orchymun sydd ei angen.
