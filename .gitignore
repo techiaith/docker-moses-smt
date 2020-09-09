@@ -1,3 +1,4 @@
 dockerfiles/moses-smt/*.sh
 dockerfiles/moses-smt/*.py
 tut/API_KEY
+moses-models/*

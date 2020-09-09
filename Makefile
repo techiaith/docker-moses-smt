@@ -4,7 +4,10 @@ build:
 	docker build --rm -t techiaith/moses-smt .
 
 run:
-	docker run --name moses-smt -it -p 8080:8080 techiaith/moses-smt bash
+	docker run --name moses-smt -it \
+		-v ${PWD}/moses-models:/home/moses/moses-models \
+		-p 8080:8080 \
+		techiaith/moses-smt bash
 
 stop:
 	-docker stop moses-smt
