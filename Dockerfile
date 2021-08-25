@@ -29,6 +29,9 @@
 FROM ubuntu:16.04
 MAINTAINER Uned Technolegau Iaith, Prifysgol Bangor / Language Technologies Unit, Bangor University <techiaith@bangor.ac.uk>
 
+#ARG DEBIAN_FRONTEND=noninteractive
+#ENV TZ=Europe/London
+
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
 	unzip \
 	make \
@@ -60,7 +63,7 @@ RUN sed -i -e 's/# cy_GB.UTF-8 UTF-8/cy_GB.UTF-8 UTF-8/' /etc/locale.gen && \
 
 ENV LANG cy_GB.UTF-8
 
-RUN pip3 install cherrypy
+RUN pip3 install cherrypy==8.0.1
 RUN pip3 install python-Levenshtein
 
 RUN mkdir -p /home/moses
